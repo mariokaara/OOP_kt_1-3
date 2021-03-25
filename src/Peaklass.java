@@ -23,7 +23,7 @@ public class Peaklass {
     }
 
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
 
         // Rakendatakse vastavat staatilist meetodit, et lugeda failist lendude andmed
         List<Lend> lennud = loeLennud("fail");
@@ -42,29 +42,28 @@ public class Peaklass {
         // suvalises järjekorras. Lendude list järjestada iga reisija jaoks uuesti ümber ning transportida
         // reisija esimese kolme reisiga
 
-        for (Lend i: lennud){
+        for (Reisija i : reisijad) {
+            Collections.shuffle(lennud);
             for (int j = 0; j < 3; j++) {
-                Collections.shuffle(reisijad);
-                i.transpordiReisija(reisijad.get(j));
+                lennud.get(j).transpordiReisija(i);
             }
-            }
+        }
 
         // Sorteeritakse lennud vastavalt meetodis compareTo kirjeldatud järjekorrale
         Collections.sort(lennud);
 
         // Lendude info väljastatakse ekraanile
-        for (Lend i: lennud){
+        for (Lend i : lennud) {
             System.out.println(i.toString());
         }
 
         // Lendude reisijate info väljastatakse ekraanile
-        for (Lend i: lennud){
+        for (Lend i : lennud) {
             System.out.println(i.väljastaReisijad());
         }
 
-        }
-
-
-
     }
+
+
+}
 
